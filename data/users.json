@@ -1,0 +1,18 @@
+[
+    {
+        "id": 1,
+        "nama": "Administrator",
+        "username": "admin",
+        "password": "123",
+        "role": "admin",
+        "status": true
+    },
+    {
+        "id": 2,
+        "nama": "Viewer",
+        "username": "viewer",
+        "password": "123",
+        "role": "viewer",
+        "status": true
+    }
+]

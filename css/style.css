@@ -1,0 +1,960 @@
+/* =========================================
+   KML Launcher Lite v1.0
+   PT Air Minum Intan Banjar
+========================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Segoe UI,Tahoma,Geneva,Verdana,sans-serif;
+}
+
+body{
+
+    margin:0;
+
+    font-family:Segoe UI,Arial,sans-serif;
+
+    min-height:100vh;
+
+    background:
+
+    radial-gradient(
+        circle at 20% 20%,
+        rgba(255,255,255,.9),
+        transparent 25%
+    ),
+
+    radial-gradient(
+        circle at 80% 70%,
+        rgba(0,180,255,.45),
+        transparent 30%
+    ),
+
+    linear-gradient(
+        135deg,
+        #dff4ff,
+        #8cc8ff,
+        #4c8eea,
+        #234fa8
+    );
+
+    background-size:
+    200% 200%;
+
+    animation:
+    backgroundMove 12s ease infinite;
+
+    background-attachment:fixed;
+
+    overflow-x:hidden;
+
+}
+
+
+/*==============================
+   BACKGROUND GLOW ANIMATION
+==============================*/
+
+@keyframes backgroundMove{
+
+    0%{
+
+        background-position:
+        0% 50%;
+
+    }
+
+
+    50%{
+
+        background-position:
+        100% 50%;
+
+    }
+
+
+    100%{
+
+        background-position:
+        0% 50%;
+
+    }
+
+}
+
+/*==================================================
+HEADER COMPACT
+==================================================*/
+
+.header{
+
+    width:95%;
+
+    margin:10px auto;
+
+    background:linear-gradient(
+        135deg,
+        #0f4db8,
+        #2c6ee9,
+        #2b5fc9
+    );
+
+    border-radius:22px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:8px 20px;
+
+    box-sizing:border-box;
+
+    box-shadow:
+    0 8px 22px rgba(0,0,0,.22);
+
+}
+
+
+.header-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+}
+
+
+.header-title h1{
+
+    color:white;
+
+    font-size:24px;
+
+    margin:0;
+
+    font-weight:700;
+
+}
+
+
+.header-title p{
+
+    color:#e7f2ff;
+
+    font-size:14px;
+
+    margin-top:4px;
+
+}
+
+
+.header-right{
+
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+
+}
+
+
+.logo{
+
+    width:105px;
+
+    height:auto;
+
+    animation:logoFloat 4s ease-in-out infinite;
+
+    filter:drop-shadow(0 6px 12px rgba(255,255,255,.35));
+
+}
+
+
+/* ===========================
+        CONTAINER
+=========================== */
+
+.container{
+
+    width:90%;
+
+    max-width:1350px;
+
+    margin:25px auto;
+
+    position:relative;
+
+}
+
+.container::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:450px;
+
+    height:450px;
+
+    background:
+    rgba(255,255,255,.25);
+
+    border-radius:50%;
+
+    filter:blur(80px);
+
+    top:50px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    z-index:-1;
+
+}
+
+/* ===========================
+        MENU GRID
+=========================== */
+
+.card{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:20px;
+
+}
+
+
+/* ===========================
+   CARD ITEM
+=========================== */
+
+.card > a,
+#btnKMLLauncher{
+
+    min-height:180px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-decoration:none;
+
+    color:#333;
+
+    background:rgba(255,255,255,.75);
+
+    backdrop-filter:blur(12px);
+
+    -webkit-backdrop-filter:blur(12px);
+
+    border-radius:22px;
+
+    padding:18px 12px;
+
+    text-align:center;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.15);
+
+    transition:
+        transform .4s cubic-bezier(.25,.8,.25,1),
+        box-shadow .4s ease;
+
+    cursor:pointer;
+
+    border:none;
+
+    width:100%;
+
+}
+
+
+/* ==========================================
+   HOVER EFFECT (Desktop & Laptop Only)
+========================================== */
+
+@media (hover:hover){
+
+    .card > a:hover,
+    #btnKMLLauncher:hover{
+
+        transform:
+        translateY(-8px)
+        scale(1.02);
+
+        box-shadow:
+        0 0 25px rgba(0,150,255,.45),
+        0 20px 40px rgba(0,0,0,.25);
+
+    }
+
+}
+
+
+
+.icon{
+
+    font-size:38px;
+
+    margin-bottom:10px;
+
+}
+
+
+.menu-title{
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    color:#1565c0;
+
+}
+
+
+.menu-desc{
+
+    margin-top:7px;
+
+    font-size:12px;
+
+    color:#666;
+
+    line-height:1.5;
+
+}
+
+/* ===========================
+        MODAL
+=========================== */
+
+.kml-modal{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.45);
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    backdrop-filter:blur(5px);
+
+    z-index:9999;
+
+}
+
+.kml-window{
+
+    width:95%;
+
+    max-width:450px;
+
+    background:#fff;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.3);
+
+}
+
+.kml-header{
+
+    background:#1565c0;
+
+    color:#fff;
+
+    padding:16px 20px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+}
+
+.kml-header button{
+
+    background:none;
+
+    border:none;
+
+    color:#fff;
+
+    font-size:28px;
+
+    cursor:pointer;
+
+}
+
+.kml-body{
+
+    padding:30px;
+
+}
+
+.login-input{
+
+    width:100%;
+
+    padding:13px;
+
+    margin-top:12px;
+
+    border:1px solid #ddd;
+
+    border-radius:10px;
+
+    font-size:15px;
+
+}
+
+#btnLogin{
+
+    width:100%;
+
+    margin-top:18px;
+
+    background:#1565c0;
+
+    color:#fff;
+
+    border:none;
+
+    padding:14px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+}
+
+#btnLogin:hover{
+
+    background:#0d47a1;
+
+}
+
+#loginInfo{
+
+    margin-top:15px;
+
+    text-align:center;
+
+    color:red;
+
+    font-size:14px;
+
+}
+
+/* ===========================
+        FOOTER
+=========================== */
+
+.footer{
+
+    margin-top:auto;
+
+    background:#1749aa;
+
+    color:#fff;
+
+    text-align:center;
+
+    padding:18px;
+
+    font-size:14px;
+
+    box-shadow:0 -5px 20px rgba(0,0,0,.2);
+
+}
+
+/* ===========================
+        RESPONSIVE
+=========================== */
+
+@media(max-width:1200px){
+
+.card{
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+}
+
+}
+
+
+@media(max-width:900px){
+
+.card{
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:15px;
+
+}
+
+.card a{
+
+    min-height:150px;
+
+}
+
+}
+
+
+@media(max-width:600px){
+
+.card{
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+    gap:12px;
+
+}
+
+
+.card a{
+
+    min-height:130px;
+
+    padding:15px 8px;
+
+}
+
+
+.icon{
+
+    font-size:32px;
+
+}
+
+
+.menu-title{
+
+    font-size:14px;
+
+}
+
+
+.menu-desc{
+
+    display:none;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.header{
+
+    flex-direction:column;
+
+    align-items:center;
+
+    text-align:center;
+
+    padding:15px;
+
+}
+
+.header-left{
+
+    flex-direction:column;
+
+    gap:10px;
+
+}
+
+.logo{
+
+    width:70px;
+
+}
+
+.header-title h1{
+
+    font-size:18px;
+
+    line-height:1.4;
+
+}
+
+.header-title p{
+
+    font-size:13px;
+
+}
+
+.header-right{
+
+    width:100%;
+
+    justify-content:center;
+
+}
+
+.clock-box{
+
+    min-width:170px;
+
+    padding:10px;
+
+}
+
+#day{
+
+    font-size:14px;
+
+}
+
+#date{
+
+    font-size:13px;
+
+}
+
+#clock{
+
+    font-size:22px;
+
+}
+
+}
+
+@keyframes logoFloat{
+
+0%{
+
+transform:translateY(0px);
+
+}
+
+50%{
+
+transform:translateY(-10px);
+
+}
+
+100%{
+
+transform:translateY(0px);
+
+}
+
+}
+
+/*==============================
+CLOCK
+==============================*/
+
+.clock-box{
+
+    min-width:190px;
+
+    padding:12px 18px;
+
+    border-radius:14px;
+
+    background:rgba(255,255,255,.25);
+
+    backdrop-filter:blur(15px);
+
+    -webkit-backdrop-filter:blur(15px);
+
+    text-align:center;
+
+    box-shadow:0 8px 18px rgba(0,0,0,.18);
+
+}
+
+
+#day{
+
+    color:#fff;
+    font-size:16px;
+    font-weight:600;
+
+}
+
+#date{
+
+    color:#fff;
+    font-size:15px;
+    margin:4px 0;
+
+}
+
+#clock{
+
+    color:#fff;
+    font-size:28px;
+    font-weight:bold;
+    letter-spacing:2px;
+
+}
+
+.explorer-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:18px;
+
+}
+
+.kml-table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    margin-top:20px;
+
+}
+
+.kml-table th{
+
+    background:#1565c0;
+
+    color:white;
+
+    padding:12px;
+
+    text-align:left;
+
+}
+
+.kml-table td{
+
+    padding:12px;
+
+    border-bottom:1px solid #ddd;
+
+}
+
+.kml-table tr:hover{
+
+    background:#f5f9ff;
+
+}
+
+#btnLogout{
+
+    background:linear-gradient(135deg,#ef5350,#d32f2f);
+
+    color:#fff;
+
+    border:none;
+
+    padding:10px 18px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+    box-shadow:0 6px 15px rgba(211,47,47,.35);
+
+}
+
+#btnLogout:hover{
+
+    background:linear-gradient(135deg,#e53935,#b71c1c);
+
+    transform:translateY(-2px);
+
+    box-shadow:0 10px 20px rgba(211,47,47,.45);
+
+}
+
+/*==================================
+EXPLORER FULL SCREEN
+==================================*/
+
+.explorer-page{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:100%;
+
+    background:#f5f8fc;
+
+    z-index:99999;
+
+    overflow:auto;
+
+    padding:25px;
+
+}
+
+/* ==========================================
+   TOMBOL AKSI
+========================================== */
+
+.btnOpen,
+.btnDownload,
+.btnDelete,
+.btnOpenOffline,
+.btnDeleteOffline{
+
+    width:42px;
+    height:42px;
+
+    border:none;
+    border-radius:10px;
+
+    cursor:pointer;
+
+    margin:2px;
+
+    font-size:20px;
+
+    transition:.25s;
+
+    box-shadow:0 3px 8px rgba(0,0,0,.18);
+
+}
+
+.btnOpen,
+.btnOpenOffline{
+
+    background:#2e7d32;
+    color:white;
+
+}
+
+.btnDownload{
+
+    background:#1976d2;
+    color:white;
+
+}
+
+.btnDelete,
+.btnDeleteOffline{
+
+    background:#d32f2f;
+    color:white;
+
+}
+
+.btnOpen:hover,
+.btnDownload:hover,
+.btnDelete:hover,
+.btnOpenOffline:hover,
+.btnDeleteOffline:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 6px 15px rgba(0,0,0,.25);
+
+}
+
+@media (max-width:768px){
+
+    .btnOpen,
+    .btnDownload,
+    .btnDelete,
+    .btnOpenOffline,
+    .btnDeleteOffline{
+
+        width:48px;
+        height:48px;
+        font-size:22px;
+
+    }
+
+}
+
+@media(max-width:480px){
+
+.logo{
+
+    width:58px;
+
+}
+
+.header-title h1{
+
+    font-size:15px;
+
+}
+
+.header-title p{
+
+    font-size:12px;
+
+}
+
+.clock-box{
+
+    min-width:150px;
+
+    padding:8px;
+
+}
+
+#day{
+
+    font-size:13px;
+
+}
+
+#date{
+
+    font-size:12px;
+
+}
+
+#clock{
+
+    font-size:18px;
+
+}
+
+}

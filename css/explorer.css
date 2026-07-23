@@ -1,0 +1,556 @@
+/* =========================================
+   KML Launcher Lite v2.0
+   Explorer
+   PT Air Minum Intan Banjar
+========================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif;
+}
+
+/* =========================================
+   BODY
+========================================= */
+
+body{
+
+    min-height:100vh;
+
+    background:
+    radial-gradient(circle at top left,#ffffff55,transparent 35%),
+    radial-gradient(circle at bottom right,#4fc3f755,transparent 35%),
+    linear-gradient(135deg,#dff4ff,#8cc8ff,#4c8eea,#234fa8);
+
+    background-size:200% 200%;
+
+    animation:bgMove 12s ease infinite;
+
+    color:#333;
+
+}
+
+@keyframes bgMove{
+
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header{
+
+    width:95%;
+
+    margin:18px auto;
+
+    padding:18px 25px;
+
+    border-radius:22px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    background:rgba(255,255,255,.18);
+
+    backdrop-filter:blur(18px);
+
+    box-shadow:0 10px 30px rgba(0,0,0,.18);
+
+}
+
+.header-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+}
+
+.logo{
+
+    width:80px;
+
+    animation:floatLogo 4s ease-in-out infinite;
+
+}
+
+@keyframes floatLogo{
+
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-8px);}
+    100%{transform:translateY(0);}
+
+}
+
+.header h1{
+
+    color:#fff;
+
+    font-size:28px;
+
+}
+
+.header p{
+
+    color:#eef6ff;
+
+    margin-top:4px;
+
+}
+
+/* =========================================
+   USER PANEL
+========================================= */
+
+.user-info{
+
+    text-align:right;
+
+}
+
+.user-info p{
+
+    color:white;
+
+    margin-bottom:12px;
+
+    font-weight:600;
+
+}
+
+#btnLogout{
+
+    border:none;
+
+    cursor:pointer;
+
+    color:white;
+
+    padding:10px 20px;
+
+    border-radius:12px;
+
+    background:linear-gradient(135deg,#ef5350,#c62828);
+
+    transition:.3s;
+
+}
+
+#btnLogout:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 10px 25px rgba(239,83,80,.35);
+
+}
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.content{
+
+    width:95%;
+
+    max-width:1400px;
+
+    margin:25px auto;
+
+}
+
+/* =========================================
+   CARD
+========================================= */
+
+.card{
+
+    background:rgba(255,255,255,.90);
+
+    backdrop-filter:blur(20px);
+
+    border-radius:24px;
+
+    padding:30px;
+
+    box-shadow:0 20px 45px rgba(0,0,0,.15);
+
+}
+
+/* =========================================
+   TOOLBAR
+========================================= */
+
+.toolbar-right{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:flex-end;
+
+    gap:12px;
+
+    flex-wrap:wrap;
+
+}
+
+.toolbar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:25px;
+
+    flex-wrap:wrap;
+
+    gap:15px;
+
+}
+
+.toolbar h2{
+
+    color:#1565c0;
+
+    font-size:24px;
+
+}
+
+#btnFolder,
+#btnUpload{
+
+    border:none;
+
+    cursor:pointer;
+
+    padding:12px 22px;
+
+    border-radius:12px;
+
+    color:white;
+
+    font-size:15px;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+
+#btnFolder{
+
+    background:linear-gradient(135deg,#FB8C00,#EF6C00);
+
+}
+
+#btnFolder:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 10px 25px rgba(251,140,0,.35);
+
+}
+
+#btnUpload{
+
+    background:linear-gradient(135deg,#43A047,#2E7D32);
+
+}
+
+#btnUpload:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 10px 25px rgba(67,160,71,.35);
+
+}
+
+/* =========================================
+   TABLE
+========================================= */
+
+.kml-table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    overflow:hidden;
+
+    border-radius:18px;
+
+}
+
+.kml-table thead{
+
+    background:#1565c0;
+
+    color:white;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:5;
+
+}
+
+.kml-table th{
+
+    padding:16px;
+
+    text-align:left;
+
+    font-size:15px;
+
+}
+
+.kml-table td{
+
+    padding:15px;
+
+    background:white;
+
+    border-bottom:1px solid #e8e8e8;
+
+}
+
+.kml-table tbody tr{
+
+    transition:.25s;
+
+}
+
+.kml-table tbody tr:hover td{
+
+    background:#f3f9ff;
+
+}
+
+/* =========================================
+   BUTTON AKSI
+========================================= */
+
+.btnOpen,
+.btnDownload,
+.btnDelete{
+
+    border:none;
+
+    cursor:pointer;
+
+    padding:8px 12px;
+
+    min-width:42px;
+    min-height:42px;
+
+    margin-right:6px;
+
+    border-radius:8px;
+
+    font-size:14px;
+
+    color:white;
+
+    transition:.25s;
+
+}
+
+.btnOpen{
+
+    background:#1565c0;
+
+}
+
+.btnDownload{
+
+    background:#2e7d32;
+
+}
+
+.btnDelete{
+
+    background:#d32f2f;
+
+}
+
+.btnOpen:hover,
+.btnDownload:hover,
+.btnDelete:hover{
+
+    transform:translateY(-2px);
+
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer{
+
+    margin-top:35px;
+
+    text-align:center;
+
+    padding:20px;
+
+    color:white;
+
+    font-size:14px;
+
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media(max-width:900px){
+
+.header{
+
+    flex-direction:column;
+
+    text-align:center;
+
+    gap:20px;
+
+}
+
+.header-left{
+
+    flex-direction:column;
+
+}
+
+.user-info{
+
+    text-align:center;
+
+}
+
+.toolbar{
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.card{
+
+    padding:18px;
+
+}
+
+.logo{
+
+    width:65px;
+
+}
+
+.header h1{
+
+    font-size:22px;
+
+}
+
+.kml-table{
+
+    display:block;
+
+    overflow-x:auto;
+
+}
+
+}
+
+/* ==========================================
+   GOOGLE EARTH MODAL
+========================================== */
+
+.earthModal{
+
+    display:none;
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:rgba(0,0,0,.6);
+
+    justify-content:center;
+    align-items:center;
+
+    z-index:9999;
+
+}
+
+.earthContent{
+
+    background:white;
+
+    width:340px;
+
+    max-width:90%;
+
+    padding:25px;
+
+    border-radius:18px;
+
+    text-align:center;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
+
+}
+
+/* ==========================================
+   TAB MENU
+========================================== */
+
+.tabMenu{
+    display:flex;
+    gap:10px;
+    margin-top:10px;
+    flex-wrap:wrap;
+}
+
+.tabBtn{
+    padding:8px 14px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    background:#E5E7EB;
+    font-weight:600;
+    transition:all .2s ease;
+}
+
+.tabBtn:hover{
+    transform:translateY(-1px);
+}
+
+.tabBtn.active{
+    background:#2563EB;
+    color:white;
+}

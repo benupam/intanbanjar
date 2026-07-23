@@ -1,0 +1,18 @@
+[
+    {
+        "id": 1,
+        "nama": "Jaringan Distribusi Cabang II",
+        "file": "kml/jaringan_distribusi.kml",
+        "jenis": "KML",
+        "ukuran": "2.4 MB",
+        "tanggal": "16 Juli 2026"
+    },
+    {
+        "id": 2,
+        "nama": "Pipa Transmisi Utama",
+        "file": "kml/pipa_transmisi.kmz",
+        "jenis": "KMZ",
+        "ukuran": "5.8 MB",
+        "tanggal": "16 Juli 2026"
+    }
+]

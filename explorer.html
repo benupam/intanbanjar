@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>
+Explorer - KML Launcher Lite
+</title>
+
+<link rel="stylesheet" href="css/explorer.css">
+
+<link rel="icon" href="assets/logo.png">
+
+</head>
+
+<body>
+
+<!-- ===========================
+HEADER
+=========================== -->
+
+<header class="header">
+
+    <div class="header-left">
+
+        <img src="assets/logo.png"
+             class="logo"
+             alt="Logo">
+
+        <div>
+
+            <h1>KML Launcher Lite</h1>
+
+            <p>
+                PT. Air Minum Intan Banjar (Perseroda)
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="user-info">
+
+        <p id="welcomeUser">
+            Selamat Datang
+        </p>
+
+        <button
+            id="btnLogout"
+            title="Keluar dari aplikasi">
+
+            🚪 Logout
+
+        </button>
+
+    </div>
+
+</header>
+
+<!-- ===========================
+CONTENT
+=========================== -->
+
+<main class="content">
+
+<div class="card">
+
+<div class="toolbar">
+
+    <div>
+
+        <h2>🌍 Daftar File KML</h2>
+
+        <div class="tabMenu">
+
+            <button id="btnOnline" class="tabBtn active">
+                🌐 File Online
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="toolbar-right">
+
+    <div id="menuAdmin">
+
+        <button
+            id="btnUpload"
+            title="Upload file KML atau KMZ">
+
+            📤 Upload KML/KMZ
+
+        </button>
+
+        <input
+            type="file"
+            id="fileInput"
+            accept=".kml,.kmz"
+            style="display:none">
+
+        </div>
+
+    </div>
+
+</div>
+
+<table class="kml-table">
+
+<thead>
+
+<tr>
+
+<th>Nama File</th>
+
+<th>Jenis</th>
+
+<th>Ukuran</th>
+
+<th>Aksi</th>
+
+</tr>
+
+</thead>
+
+<tbody id="kmlTableBody">
+
+</tbody>
+
+</table>
+
+</div>
+
+</main>
+
+<footer class="footer">
+
+© 2026 PT Air Minum Intan Banjar (Perseroda)
+
+</footer>
+
+
+<!-- ==========================================
+     GOOGLE EARTH LAUNCHER
+========================================== -->
+
+<div id="earthModal" class="earthModal">
+
+    <div class="earthContent">
+
+        <h2>🌍 Google Earth Launcher</h2>
+
+        <p id="earthFile"></p>
+
+        <div class="earthButton">
+
+            <button id="btnEarthWeb">
+
+                🌍 Buka Google Earth
+
+            </button>
+
+            <button id="btnEarthDownload">
+
+                ⬇ Download
+
+            </button>
+
+            <button id="btnEarthClose">
+
+                ❌ Tutup
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+
+<script defer src="js/supabase.js"></script>
+<script defer src="js/storage.js"></script>
+<script defer src="js/explorer.js"></script>
+
+</body>
+
+</html>

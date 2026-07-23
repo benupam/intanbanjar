@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>
+Google Earth Launcher
+</title>
+
+</head>
+
+
+<body>
+
+
+<h3>
+🌍 Membuka Google Earth...
+</h3>
+
+
+<script>
+
+const params = new URLSearchParams(window.location.search);
+
+const kml = params.get("kml");
+
+if (kml) {
+
+    window.location.href =
+        "https://earth.google.com/web/?kml=" +
+        encodeURIComponent(kml);
+
+} else {
+
+    document.body.innerHTML = "File KML tidak ditemukan";
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>

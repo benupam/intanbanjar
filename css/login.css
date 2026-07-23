@@ -1,0 +1,318 @@
+/* =========================================
+   LOGIN PAGE
+   KML Launcher Lite v1.0
+========================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif;
+}
+
+body{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:
+    radial-gradient(circle at top left,#ffffff55,transparent 35%),
+    radial-gradient(circle at bottom right,#4fc3f755,transparent 35%),
+    linear-gradient(135deg,#dff4ff,#8cc8ff,#4c8eea,#234fa8);
+
+    background-size:200% 200%;
+
+    animation:bgMove 12s ease infinite;
+    
+}
+
+@keyframes bgMove{
+
+    0%{background-position:0% 50%;}
+
+    50%{background-position:100% 50%;}
+
+    100%{background-position:0% 50%;}
+
+}
+
+.login-container{
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:20px;
+
+}
+
+.login-card{
+
+    width:100%;
+
+    max-width:470px;
+
+    background:rgba(255,255,255,.82);
+
+    backdrop-filter:blur(18px);
+
+    border-radius:24px;
+
+    padding:45px 40px;
+
+    text-align:center;
+
+    box-shadow:0 20px 45px rgba(0,0,0,.25);
+
+}
+
+.logo{
+
+    width:135px;
+    height:auto;
+
+    display:block;
+
+    margin:0 auto 4px;
+
+    filter:drop-shadow(0 0 10px rgba(255,255,255,.45));
+
+    animation:logoGlow 3s ease-in-out infinite;
+
+}
+
+@keyframes logoGlow{
+
+    0%{
+
+        filter:
+        drop-shadow(0 0 8px rgba(255,255,255,.30));
+
+    }
+
+    50%{
+
+        filter:
+        drop-shadow(0 0 18px rgba(255,255,255,.75));
+
+    }
+
+    100%{
+
+        filter:
+        drop-shadow(0 0 8px rgba(255,255,255,.30));
+
+    }
+
+}
+
+.login-card h1{
+
+    font-size:24px;
+
+    color:#1565c0;
+
+    font-weight:700;
+
+    margin:0;
+
+    line-height:1.2;
+
+}
+
+.login-card h2{
+
+    color:#444;
+
+    font-size:22px;
+
+    margin:2px 0 12px;
+
+}
+
+.login-card p{
+
+    color:#666;
+
+    font-size:14px;
+
+    line-height:1.5;
+
+    margin-bottom:8px;
+
+}
+
+.login-card input{
+
+    width:100%;
+
+    padding:15px;
+
+    margin-bottom:15px;
+
+    border-radius:12px;
+
+    border:1px solid #ccc;
+
+    outline:none;
+
+    font-size:16px;
+
+    transition:.3s;
+
+}
+
+.login-card input:focus{
+
+    border-color:#1565c0;
+
+    box-shadow:0 0 12px rgba(21,101,192,.25);
+
+}
+
+#btnLogin{
+
+    width:100%;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:linear-gradient(135deg,#1565c0,#1e88e5);
+
+    color:white;
+
+    font-size:17px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+#btnLogin:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 10px 25px rgba(30,136,229,.35);
+
+}
+
+#loginInfo{
+
+    margin-top:15px;
+
+    min-height:22px;
+
+    color:#d32f2f;
+
+    font-size:14px;
+
+}
+
+.back{
+
+    display:inline-block;
+
+    margin-top:25px;
+
+    text-decoration:none;
+
+    color:#1565c0;
+
+    font-weight:600;
+
+}
+
+.back:hover{
+
+    text-decoration:underline;
+
+}
+
+@media(max-width:768px){
+
+    .login-card{
+
+        max-width:420px;
+
+        padding:35px 30px;
+
+    }
+
+    .logo{
+
+        width:115px;
+
+    }
+
+    .login-card h1{
+
+        font-size:22px;
+
+    }
+
+    .login-card h2{
+
+        font-size:20px;
+
+    }
+
+}
+
+@media(max-width:480px){
+
+    .login-card{
+
+        padding:28px 22px;
+
+    }
+
+    .logo{
+
+        width:95px;
+
+    }
+
+    .login-card h1{
+
+        font-size:18px;
+
+    }
+
+    .login-card h2{
+
+        font-size:17px;
+
+    }
+
+    .login-card input{
+
+        padding:13px;
+
+        font-size:15px;
+
+    }
+
+    #btnLogin{
+
+        padding:13px;
+
+        font-size:16px;
+
+    }
+
+}
